@@ -1,0 +1,59 @@
+ <div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <h1>Singup</h1>
+            <form onsubmit="event.preventDefault()" class="">
+                <div class="form-group">
+                    <label for="validationCustom01"><b>First name</b></label>
+                    <input [(ngModel)]="firstName" name="firstName" placeholder="First name" type="text" class="form-control">
+                    <div class="valid-feedback">✓</div>
+                </div>
+                <div class="form-group">
+                    <label for="validationCustom02"><b>Last name</b></label>
+                    <input [(ngModel)]="lastName" name="lastName" placeholder="Last name" type="text" class="form-control"  >
+                    <div class="valid-feedback">✓</div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><b>Age</b></label>
+                    <select (input)="onAgeCreated($event)"class="form-control" id="ageInput">
+                    <option *ngFor="let year of years">{{year}}</option>
+                    </select>
+                </div>
+                <div class="float-right">
+                    <button  (click)="onUserCreated()" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-sm">   
+            <h3>Users</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First name </th>
+                        <th scope="col">Last name </th>
+                        <th scope="col">Age </th>
+                        <th scope="col">Created </th>
+                        <th scope="col">Active/Inactive</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                    <tbody class="content"  *ngFor="let user of users; index as i">
+                        <tr>
+                            <td>{{i}}</td>
+                            <td>{{user.fName}}</td>
+                            <td>{{user.lName}}</td>
+                            <td>{{user.age}}</td>
+                            <td>{{user.date}}</td>
+                            <td>{{user.activity}}</td>
+                            <td><button (click)="onDelete(i)" id="deleteBtn" class="btn btn-danger">Delete</button></td>
+                            <td><button (click)='onEdit(i)' id="deleteBtn" class="btn btn-primary">Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+         </div>
+    </div>
+ </div>
+        
