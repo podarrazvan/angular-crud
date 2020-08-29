@@ -11,7 +11,7 @@ export class UsersListComponent implements OnInit {
   years=[];
   firstName;
   lastName;
-  userAge = 0;
+  userAge;
   
   user = {}
   users = []
@@ -26,31 +26,17 @@ export class UsersListComponent implements OnInit {
   }
 
   onUserCreated() {
-    if(this.firstName !=''){
-      if(this.lastName !=''){
-        if(this.userAge !=0){
-          let nr = Math.floor(Math.random() * Math.floor(2));
-          this.user={
-            "fName": this.firstName,
-           "lName" : this.lastName,
-            "age":this.userAge,
-            "date":`${this.d.getDate()} / ${this.d.getMonth()} / ${this.d.getFullYear()}`,
-            "activity": nr === 1 ?  'active' : 'inactive'
-          };
-          this.users.push(this.user);
-          this.firstName = "";
-          this.lastName = "";
-       
-        }else{
-          alert('You can\'t be 0 years old!')
-        }
-      } else{
-        alert('Plase enter your last name!')
-      }
-    }else{
-      alert('Plase enter your first name!')
-    }
-
+    let nr = Math.floor(Math.random() * Math.floor(2));
+    this.user={
+      "fName": this.firstName,
+      "lName" : this.lastName,
+      "age":this.userAge,
+      "date":`${this.d.getDate()} / ${this.d.getMonth()} / ${this.d.getFullYear()}`,
+      "activity": nr === 1 ?  'active' : 'inactive'
+     };
+    this.users.push(this.user);
+    this.firstName = "";
+    this.lastName = "";
   }
   onAgeCreated(event: any) {
     this.userAge = event.target.value;
